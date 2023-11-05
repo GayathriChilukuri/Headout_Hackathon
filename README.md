@@ -9,7 +9,7 @@ HTML, CSS, javascript
 API: Mapmyindia
 
 
-Team Members:
+Team Members: <br>
 **Deekshitha Dondeti** <br>
 **Kalyani G** <br>
 **Gayathri Chilukuri**
