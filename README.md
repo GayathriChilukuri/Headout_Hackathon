@@ -8,7 +8,7 @@ Flask
 HTML, CSS, javascript
 API: Mapmyindia
 
-<br>
+
 Team Members:
 **Deekshitha Dondeti** <br>
 **Kalyani G** <br>
