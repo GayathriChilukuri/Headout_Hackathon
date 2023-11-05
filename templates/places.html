@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie-edge" />
+    <link rel="stylesheet" href="static/css/styleindex.css" />
+</head>
+<body>
+    <section class="place-container">
+        <header>Places</header>
+        <form action="#" class="form">
+            <div class="input-box">
+                <label>places</label>
+                <div class="select">
+                    <input type="text" id='placecity' placeholder="Select the places you want to visit" required />
+                    <ul class="places-list">
+                        <li value="mumbai">charmnhri4ujtb4minar</li>
+                        <li value="Mumbai">Golconda</li>
+                        <li value="Mumbai">Go</li>
+                        <li value="Mumbai">temple</li>
+                        <li value="Mumbai">Gonda</li>
+                        <li value="Mumbai">church</li>
+                        <li value="Mumbai">hospital</li>
+                    </ul>
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+            const placeInput = document.getElementById('placecity');
+            const placesList = document.querySelector('.places-list');
+            const checkboxes = placesList.querySelectorAll('input[type="checkbox"]');
+
+            placeInput.addEventListener("click", function (event){
+              placesList.style.display = 'block';
+            });
+
+            placeInput.addEventListener('blur', function () {
+              setTimeout(() => {
+                placesList.style.display = 'none';
+              }, 200); // Delay the hiding to allow time to click the checkboxes
+            });
+
+            placesList.addEventListener("click", function (event) {
+              if (event.target.tagName === "LI") {
+                  const selectedCity = event.target.textContent;
+                  if (!placeInput.value.includes(selectedCity)) {
+                      if (placeInput.value.length === 0) {
+                        placeInput.value = selectedCity;
+                      } else {
+                          placeInput.value += `, ${selectedCity}`;
+                      }
+                  }
+              }
+          });
+          });
+            </script>
+            <button class="plan" id="nextButton">Get Plan</button>
+        </form>
+    </section>
+</body>
+</html>

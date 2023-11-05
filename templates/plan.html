@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Calendar</title>
+  <link rel="stylesheet" href="styleplan.css">
+  <style>
+    /* Your existing CSS here */
+    /* ... */
+
+    /* Custom styles for time range and event description */
+    .time-range {
+      font-size: 20px; /* Increased font size */
+      font-weight: bold;
+    }
+
+    .event-description {
+      font-size: 17px;
+      margin-top: 5px;
+    }
+
+    .day-container {
+      padding-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Timeline -->
+  <div class="timeline" id="timeline"></div>
+
+  <script>
+    const eventList = [
+      [1, '10:00', '10:05', 'travel'],
+      [1, '10:05', '12:05', 'Fort St. George'],
+      [1, '12:05', '12:15', 'travel'],
+      [1, '12:15', '14:15', 'Government Museum'],
+      [1, '14:15', '14:25', 'travel'],
+      [1, '14:25', '16:25', 'Kapaleeshwarar Temple'],
+      [1, '16:25', '16:30', 'travel'],
+      [1, '16:30', '18:30', 'Kotturpuram Bridge'],
+      [1, '18:30', '18:38', 'travel'],
+      [1, '18:38', '20:38', 'Birla Planetarium'],
+      [2, '10:00', '10:10', 'travel'],
+      [2, '10:10', '13:10', 'Guindy National Park'],
+      [2, '13:10', '13:37', 'travel'],
+      [2, '13:37', '17:37', 'Arignar Anna Zoological Park'],
+      [2, '17:37', '04:31', 'travel'],
+      [3, '09:00', '09:10', 'travel'],
+      [3, '09:10', '12:00', 'Beach'],
+      // Add more events and days as needed
+    ];
+
+    function createTimeline(events) {
+      const timeline = document.getElementById('timeline');
+      let currentDay = null;
+      let lastSide = 'left'; // Initialize to 'left'
+
+      events.forEach(event => {
+        const day = event[0];
+        const startTime = event[1];
+        const endTime = event[2];
+        const description = event[3];
+
+        // Determine if the event should appear on the left or right
+        let side;
+        if (lastSide === 'left') {
+          side = 'right';
+        } else {
+          side = 'left';
+        }
+        lastSide = side;
+
+        if (currentDay !== day) {
+          // Create a new line for the day with day number on the left side
+          const dayLine = document.createElement('div');
+          dayLine.className = 'container day-container left'; // Add the 'day-container' class
+          const dayContent = document.createElement('div');
+          dayContent.className = 'content';
+          const dayH2 = document.createElement('h2');
+          dayH2.textContent = `Day ${day}`;
+          dayContent.appendChild(dayH2);
+          dayLine.appendChild(dayContent);
+          timeline.appendChild(dayLine);
+
+          // Add vertical spacing (day separator)
+          const daySeparator = document.createElement('div');
+          daySeparator.className = 'day-separator';
+          timeline.appendChild(daySeparator);
+
+          currentDay = day;
+        }
+
+        // Create the timeline entry
+        const line = document.createElement('div');
+        line.className = 'container ' + side;
+        const content = document.createElement('div');
+        content.className = 'content';
+        const p1 = document.createElement('p');
+        p1.className = 'time-range';
+        p1.textContent = `${startTime} - ${endTime}`;
+        const p2 = document.createElement('p');
+        p2.className = 'event-description';
+        p2.textContent = description;
+        content.appendChild(p1);
+        content.appendChild(p2);
+        line.appendChild(content);
+        timeline.appendChild(line);
+      });
+    }
+
+    createTimeline(eventList);
+  </script>
+</body>
+</html>

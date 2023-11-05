@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewpoint" content="width=device-width, initial scale=1.0">
+    <title>My Homepage</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <img src="{{ url_for('static',filename='css/images/logo.png') }}" class = "logo">
+<!--            <img src="logo.png" class="logo">-->
+            <nav>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                </ul>
+            </nav>
+            <img src="{{ url_for('static',filename='css/images/imageicon.png') }}" class = "menu-icon">
+<!--            <img src="imageicon.png" class="menu-icon">-->
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h1>Travel at ease</h1>
+                <p>"Optimize your time and finances by collaborating with us in your planning."</p>
+                <br>
+                <p>Relax and enjoy your trip without worries with us.</p>
+                <a href="/index" class="custom-button">Plan your journey now!</a>
+            </div>
+            <div class="col">
+                <div class="card card1">
+                    <h5>We suggest the best route on your trip</h5>
+                    <p>You won't miss out on any fun or relaxation during your trip. So relax and enjoy your trip, leave the rest to us.</p>
+                </div>
+                <div class="card card2">
+                    <h5>The spectacular view</h5>
+                    <p>You won't miss out on any fun or relaxation during your trip. So relax and enjoy your trip, leave the rest to us.</p>
+                </div>
+                <div class="card card3">
+                    <h5>Traditions and heritage sites</h5>
+                    <p>You won't miss out on any fun or relaxation during your trip. So relax and enjoy your trip, leave the rest to us.</p>
+                </div>
+                <div class="card card4">
+                    <h5>Amazing food on the way</h5>
+                    <p>You won't miss out on any fun or relaxation during your trip. So relax and enjoy your trip, leave the rest to us.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

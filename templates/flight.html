@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="static/css/styleindex.css" />
+</head>
+<body>
+    <section class="new-container">
+        <header>Flights</header>
+        <form action="#" class="form">
+            <div class="input-box">
+                <label>Choose Departure Flight</label>
+                <div class="select">
+                    <input type="text" id="flightscity" placeholder="Select the flight" required />
+                    <ul class="flights-dropdown-list">
+                        <li value="Pune">Pune-Hyderabad</li>
+                        <li value="Mumbai">Mumbai-tirupati</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="input-box">
+                <label>Choose Return Flight</label>
+                <div class="select">
+                    <input type="text" id="returnflightcity" placeholder="Select the flight" required />
+                    <ul class="return-flights-dropdown-list">
+                        <li value="Bangalore">Bangalore-pune</li>
+                        <li value="Chennai">Chennai-pune</li>
+                        <li value="Hyderabad">Hyderabad-pune</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="next" id="nextButton">Next</button>
+        </form>
+    </section>
+
+    <script>
+        const flightInput = document.getElementById('flightscity');
+        const returnInput = document.getElementById('returnflightcity');
+        const flightDropdown = document.querySelector('.flights-dropdown-list');
+        const returnDropdown = document.querySelector('.return-flights-dropdown-list');
+
+        flightDropdown.addEventListener('click', (e) => {
+            if (e.target.tagName === 'LI') {
+                flightInput.value = e.target.textContent;
+                flightDropdown.style.display = 'none'; // Hide the dropdown
+            }
+        });
+
+        returnDropdown.addEventListener('click', (e) => {
+            if (e.target.tagName === 'LI') {
+                returnInput.value = e.target.textContent;
+                returnDropdown.style.display = 'none'; // Hide the dropdown
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="static/css/styleindex.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>User Page</header>
+      <form action="#" class="form">
+        <div class="input-box">
+          <label>From city</label>
+          <div class="select">
+              <div class="caret">▼</div>
+              <input type="text" id="fromCityInput" placeholder="Enter the current city" required />
+              <ul class="from-city-dropdown-list">
+                  <li value="Pune">Pune</li>
+                  <li value="Mumbai">Mumbai</li>
+              </ul>
+          </div>
+        </div>
+
+      <div class="input-box">
+          <label>Cities</label>
+          <div class="select">
+              <div class="caret">▼</div>
+              <input type="text" id="cityInput" placeholder="Select the cities" required />
+              <ul class="city-dropdown-list">
+                  <li value="Bangalore">Bangalore</li>
+                  <li value="Chennai">Chennai</li>
+                  <li value="Hyderabad">Hyderabad</li>
+              </ul>
+          </div>
+      </div>
+
+      <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              const fromCityInput = document.getElementById("fromCityInput");
+              const fromCityDropdownList = document.querySelector(".from-city-dropdown-list");
+              const cityInput = document.getElementById("cityInput");
+              const cityDropdownList = document.querySelector(".city-dropdown-list");
+
+              fromCityInput.addEventListener("click", function (event) {
+                  fromCityDropdownList.style.display = "block";
+              });
+
+              fromCityInput.addEventListener("blur", function () {
+                  setTimeout(() => {
+                      fromCityDropdownList.style.display = "none";
+                  }, 200);
+              });
+
+              fromCityDropdownList.addEventListener("click", function (event) {
+                  if (event.target.tagName === "LI") {
+                      fromCityInput.value = event.target.textContent;
+                      fromCityDropdownList.style.display = "none";
+                  }
+              });
+
+              cityInput.addEventListener("click", function (event) {
+                  cityDropdownList.style.display = "block";
+              });
+
+              cityInput.addEventListener("blur", function () {
+                  setTimeout(() => {
+                      cityDropdownList.style.display = "none";
+                  }, 200);
+              });
+
+              cityDropdownList.addEventListener("click", function (event) {
+                  if (event.target.tagName === "LI") {
+                      const selectedCity = event.target.textContent;
+                      if (!cityInput.value.includes(selectedCity)) {
+                          if (cityInput.value.length === 0) {
+                              cityInput.value = selectedCity;
+                          } else {
+                              cityInput.value += `, ${selectedCity}`;
+                          }
+                      }
+                  }
+              });
+          });
+      </script>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Start Date</label>
+            <input type="date" placeholder="Enter Start Date" required />
+          </div>
+          <div class="input-box">
+            <label>End Date</label>
+            <input type="date" placeholder="Enter End Date" required />
+          </div>
+        </div>
+        <button class="next" id="nextButton">Next</button>
+      </form>
+    </section>
+
+    <section class="new-container">
+      <header>Flights</header>
+      <form action="#" class="form">
+        <div class="input-box">
+          <label>Flights</label>
+            <div class="select">
+            <input type="text" id="flightscity" placeholder="Select the flight" required />
+              <ul class="flights-dropdown-list">
+                <li value="Pune">Pune-Hyderabad</li>
+                <li value="Mumbai">Mumbai-tirupati</li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="input-box">
+          <label>Return Flights</label>
+          <div class="select">
+              <input type="text" id="returnflightcity" placeholder="Select the flight" required />
+              <ul class="return-flights-dropdown-list">
+                  <li value="Bangalore">Bangalore-pune</li>
+                  <li value="Chennai">Chennai-pune</li>
+                  <li value="Hyderabad">Hyderabad-pune</li>
+              </ul>
+          </div>
+       </div>
+
+       <script>
+        const flightInput = document.getElementById('flightscity');
+        const returnInput = document.getElementById('returnflightcity');
+        const flightDropdown = document.querySelector('.flights-dropdown-list');
+        const returnDropdown = document.querySelector('.return-flights-dropdown-list');
+
+        flightDropdown.addEventListener('click', (e) => {
+          if (e.target.tagName === 'LI') {
+            flightInput.value = e.target.textContent;
+            flightDropdown.innerHTML = '';
+          }
+        });
+
+        returnDropdown.addEventListener('click', (e) => {
+          if (e.target.tagName === 'LI') {
+            returnInput.value = e.target.textContent;
+            returnDropdown.innerHTML = '';
+          }
+        });
+      </script>
+
+      <button class="next" id="nextButton">Next</button>
+      </form>
+    </section>
+
+
+
+    <section class="place-container">
+      <header>Places</header>
+      <form action="#" class="form">
+        <div class="input-box">
+          <label>places</label>
+            <div class="select">
+            <input type="text" id='placecity'placeholder="Select the places you want to visit" required />
+              <ul class="places-list">
+                <li value="mumbai">charminar</li>
+                <li value="Mumbai">Golconda</li>
+                <li value="Mumbai">Goa</li>
+                <li value="Mumbai">Gonda temple</li>
+                <li value="Mumbai">church</li>
+                <li value="Mumbai">hospital</li>
+              </ul>
+            </div>
+
+        </div>
+        <script>
+
+          document.addEventListener('DOMContentLoaded', function () {
+            const placeInput = document.getElementById('placecity');
+            const placesList = document.querySelector('.places-list');
+            const checkboxes = placesList.querySelectorAll('input[type="checkbox"]');
+
+            placeInput.addEventListener("click", function (event){
+              placesList.style.display = 'block';
+            });
+
+            placeInput.addEventListener('blur', function () {
+              setTimeout(() => {
+                placesList.style.display = 'none';
+              }, 200); // Delay the hiding to allow time to click the checkboxes
+            });
+
+            placesList.addEventListener("click", function (event) {
+              if (event.target.tagName === "LI") {
+                  const selectedCity = event.target.textContent;
+                  if (!placeInput.value.includes(selectedCity)) {
+                      if (placeInput.value.length === 0) {
+                        placeInput.value = selectedCity;
+                      } else {
+                          placeInput.value += `, ${selectedCity}`;
+                      }
+                  }
+              }
+          });
+          });
+        </script>
+
+
+          <a href="/plan" class="custom-button">get plan</a>
+
+      </form>
+    </section>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const section1 = document.querySelector(".container");
+        const section2 = document.querySelector(".new-container");
+        const section3 = document.querySelector(".place-container");
+        const nextButtons = document.querySelectorAll(".next");
+        let currentSection = section1;
+        section2.style.display = "none";
+        section3.style.display = "none";
+
+        nextButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            currentSection.style.display = "none";
+
+            if (currentSection === section1) {
+              currentSection = section2;
+            } else if (currentSection === section2) {
+              currentSection = section3;
+            } else {
+              currentSection = section1;
+            }
+            currentSection.style.display = "block";
+          });
+        });
+      });
+    </script>
+
+  </body>
+</html>
