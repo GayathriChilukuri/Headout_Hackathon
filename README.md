@@ -10,6 +10,6 @@ API: Mapmyindia
 
 
 Team Members:
-### Deekshitha Dondeti
-### Kalyani G
-### Gayathri Chilukuri
+**Deekshitha Dondeti**
+**Kalyani G**
+**Gayathri Chilukuri**
